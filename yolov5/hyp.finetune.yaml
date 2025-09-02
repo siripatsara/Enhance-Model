@@ -1,0 +1,43 @@
+# Fine-tuning hyperparameters for Lab-5 assignment
+# เทคนิค: Data Augmentation, Model Pruning, Decay Learning Rate Function
+# เป้าหมาย: แสดงให้เห็นว่า enhanced model ลู่เข้าได้ดีกว่า baseline
+
+# Learning Rate Decay Parameters
+lr0: 0.008  # ลด initial learning rate เล็กน้อยสำหรับ fine-tuning
+lrf: 0.005  # final learning rate ต่ำกว่าเดิม (smooth decay)
+momentum: 0.945  # เพิ่ม momentum เล็กน้อย
+weight_decay: 0.0008  # เพิ่ม regularization
+warmup_epochs: 5.0  # warmup นานขึ้นสำหรับ stability
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# Loss function optimization
+box: 0.04  # ลด box loss weight เล็กน้อย
+cls: 0.6   # เพิ่ม classification weight
+cls_pw: 1.0
+obj: 1.2   # เพิ่ม objectness weight
+obj_pw: 1.0
+iou_t: 0.25  # เพิ่ม IoU threshold เล็กน้อย
+anchor_t: 4.5  # ปรับ anchor matching
+fl_gamma: 0.0
+
+# Enhanced Data Augmentation (เทคนิคที่ 1)
+# ปรับให้เหมาะกับ food detection และ fine-tuning
+hsv_h: 0.012  # ลดลงเล็กน้อยจากเดิม (สีอาหารควรคงเดิม)
+hsv_s: 0.55   # ลด saturation augmentation
+hsv_v: 0.35   # ลด value augmentation  
+degrees: 8.0  # ลดการหมุนเล็กน้อย
+translate: 0.12  # ลดการเลื่อน
+scale: 0.25   # ลดการขยาย/ย่อ
+shear: 4.0    # ลดการบิด
+perspective: 0.0003  # ลด perspective transform
+flipud: 0.0   # ไม่พลิกขึ้น-ลง (อาหารมีทิศทางที่ชัดเจน)
+fliplr: 0.4   # ลดการพลิกซ้าย-ขวา
+mosaic: 0.9   # ลด mosaic เล็กน้อยสำหรับ fine-tuning
+mixup: 0.08   # ลด mixup สำหรับ fine-tuning
+copy_paste: 0.0
+
+# Advanced regularization (เทคนิคเสริม)
+label_smoothing: 0.05  # ลด label smoothing สำหรับ fine-tuning
+erasing: 0.4          # Random erasing probability
+erasing_area: 0.1     # Erasing area fraction

@@ -1,0 +1,40 @@
+# Enhanced hyperparameters for better convergence
+# Optimized for food detection dataset
+
+# Learning rate settings
+lr0: 0.01  # initial learning rate (SGD=1E-2, Adam=1E-3)
+lrf: 0.01  # final OneCycleLR learning rate (lr0 * lrf)
+momentum: 0.937  # SGD momentum/Adam beta1
+weight_decay: 0.0005  # optimizer weight decay 5e-4
+warmup_epochs: 3.0  # warmup epochs (fractions ok)
+warmup_momentum: 0.8  # warmup initial momentum
+warmup_bias_lr: 0.1  # warmup initial bias lr
+
+# Loss settings  
+box: 0.05  # box loss gain
+cls: 0.5  # cls loss gain
+cls_pw: 1.0  # cls BCELoss positive_weight
+obj: 1.0  # obj loss gain (scale with pixels)
+obj_pw: 1.0  # obj BCELoss positive_weight
+iou_t: 0.20  # IoU training threshold
+anchor_t: 4.0  # anchor-multiple threshold
+# anchors: 3  # anchors per output grid (0 to ignore)
+fl_gamma: 0.0  # focal loss gamma (efficientDet default gamma=1.5)
+
+# Enhanced Data Augmentation for Food Detection
+hsv_h: 0.015  # image HSV-Hue augmentation (fraction) - เล็กน้อยเพราะสีอาหารสำคัญ
+hsv_s: 0.6    # image HSV-Saturation augmentation (fraction) - ปรับความอิ่มตัว
+hsv_v: 0.4    # image HSV-Value augmentation (fraction) - ปรับความสว่าง
+degrees: 10.0  # image rotation (+/- deg) - หมุนเล็กน้อย
+translate: 0.15  # image translation (+/- fraction) - เลื่อนตำแหน่ง
+scale: 0.3    # image scale (+/- gain) - ขยาย/ย่อ
+shear: 5.0    # image shear (+/- deg) - บิดเล็กน้อย
+perspective: 0.0005  # image perspective (+/- fraction), range 0-0.001
+flipud: 0.0   # image flip up-down (probability) - ไม่พลิกขึ้น-ลง
+fliplr: 0.5   # image flip left-right (probability) - พลิกซ้าย-ขวา
+mosaic: 1.0   # image mosaic (probability) - ใช้ mosaic
+mixup: 0.1    # image mixup (probability) - ใช้ mixup เล็กน้อย
+copy_paste: 0.0  # segment copy-paste (probability)
+
+# Label smoothing
+label_smoothing: 0.1  # Label smoothing epsilon
