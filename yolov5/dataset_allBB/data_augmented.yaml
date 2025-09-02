@@ -1,0 +1,32 @@
+# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
+# Enhanced Food Dataset with Data Augmentation for Lab-5
+# Original dataset: 144 training images
+# Augmented dataset: ~1,152 training images (8x expansion)
+
+# Paths to augmented dataset files
+train: dataset_allBB/images/train_augmented.txt
+val: dataset_allBB/images/val_augmented.txt
+
+# Number of classes
+nc: 3
+
+# Class names
+names:
+  0: Protein
+  1: Vegetable  
+  2: Carb
+
+# Dataset info
+download: |
+  # This is an augmented version of the original food dataset
+  # Enhanced with 7 augmentation techniques:
+  # 1. Rotation (±15 degrees)
+  # 2. Brightness/Contrast adjustment
+  # 3. Gaussian noise
+  # 4. Horizontal flip
+  # 5. HSV color shift
+  # 6. Motion blur
+  # 7. Random crop and resize
+  
+  # Usage for Lab-5 enhanced training:
+  # python train.py --data dataset_allBB/data_augmented.yaml --cfg yolov5s.yaml --hyp hyp.augmented.yaml
