@@ -1,0 +1,9 @@
+# Data configuration สำหรับ augmented dataset
+train: dataset_allBB/train_augmented.txt
+val: dataset_allBB/val_augmented.txt
+
+nc: 3
+names:
+  0: Protein
+  1: Vegetable
+  2: Carb

@@ -1,0 +1,39 @@
+# Data Augmentation Configuration file
+# สำหรับปรับแต่ง hyperparameters ให้เหมาะกับ augmented data
+
+# Enhanced hyperparameters สำหรับ augmented dataset
+lr0: 0.005  # ลด learning rate เพราะมีข้อมูลเยอะขึ้น
+lrf: 0.001  # final learning rate ต่ำลง
+momentum: 0.937
+weight_decay: 0.0008  # เพิ่ม regularization เล็กน้อย
+warmup_epochs: 5.0  # warmup นานขึ้น
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# Loss settings
+box: 0.05
+cls: 0.5
+cls_pw: 1.0
+obj: 1.0
+obj_pw: 1.0
+iou_t: 0.20
+anchor_t: 4.0
+fl_gamma: 0.0
+
+# Data Augmentation (ลดลงเพราะมี augmented data แล้ว)
+hsv_h: 0.008  # ลดลงเพราะได้ทำ augmentation แล้ว
+hsv_s: 0.4    # ลดลง
+hsv_v: 0.3    # ลดลง
+degrees: 5.0  # ลดการหมุน
+translate: 0.1  # ลดการเลื่อน
+scale: 0.2    # ลดการขยาย/ย่อ
+shear: 2.0    # ลดการบิด
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.3   # ลดการพลิก
+mosaic: 0.7   # ลด mosaic
+mixup: 0.05   # ลด mixup
+copy_paste: 0.0
+
+# Label smoothing (เพิ่มขึ้นเล็กน้อยเพื่อ generalization)
+label_smoothing: 0.1
